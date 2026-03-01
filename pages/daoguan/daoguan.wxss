@@ -1,0 +1,190 @@
+/* pages/daoguan/daoguan.wxss */
+.container {
+  padding: 20rpx;
+  background: linear-gradient(135deg, #ff9ecb 0%, #a78bfa 100%);
+  min-height: 100vh;
+}
+
+/* 地区选择器 - 左右滑动 */
+.region-scroll {
+  white-space: nowrap;
+  width: 100%;
+  margin-bottom: 30rpx;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16rpx;
+  padding: 20rpx;
+}
+
+.region-list {
+  display: inline-flex;
+  gap: 20rpx;
+}
+
+.region-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15rpx 25rpx;
+  border-radius: 12rpx;
+  background: #f8f9fa;
+  min-width: 120rpx;
+  transition: all 0.3s ease;
+}
+
+.region-item.active {
+  background: #ff6b6b;
+  transform: scale(1.05);
+}
+
+.region-item.active .region-name {
+  color: white;
+}
+
+.region-emoji {
+  font-size: 36rpx;
+  margin-bottom: 8rpx;
+}
+
+.region-name {
+  font-size: 24rpx;
+  color: #666;
+  font-weight: 500;
+}
+
+/* 地区标题 */
+.region-header {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.region-title {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2rpx 2rpx 4rpx rgba(0, 0, 0, 0.4);
+}
+
+/* 道馆表格样式保持不变... */
+.gym-table {
+  background: white;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.table-header {
+  display: flex;
+  background: #ff6b6b;
+  padding: 20rpx;
+}
+
+.header-cell {
+  flex: 1;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 24rpx;
+}
+
+.table-body {
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.table-row {
+  display: flex;
+  border-bottom: 1rpx solid #eee;
+  padding: 20rpx;
+}
+
+.table-row:last-child {
+  border-bottom: none;
+}
+
+.table-cell {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 22rpx;
+}
+
+.gym-leader {
+  align-items: center;
+}
+
+.leader-avatar {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-bottom: 8rpx;
+}
+.leader-image {
+  width: 200rpx;  /* 增大图片尺寸 */
+  height: 200rpx;
+  border-radius: 16rpx;
+  margin-bottom: 20rpx;
+  object-fit: cover; /* 保持图片比例 */
+  border: 3rpx solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.2);
+}
+.leader-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.gym-name {
+  font-weight: 500;
+  color: #333;
+}
+
+.gym-city {
+  font-size: 20rpx;
+  color: #666;
+}
+
+.type-badge {
+  padding: 6rpx 12rpx;
+  border-radius: 20rpx;
+  color: white;
+  font-size: 20rpx;
+  font-weight: 500;
+}
+
+.pokemon-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rpx;
+}
+
+.pokemon-name {
+  font-size: 20rpx;
+  color: #666;
+}
+
+.battle-rule, .battle-info {
+  font-size: 20rpx;
+  color: #444;
+}
+
+/* 属性颜色 */
+.type-normal { background-color: #A8A878; }
+.type-fire { background-color: #F08030; }
+.type-water { background-color: #6890F0; }
+.type-grass { background-color: #78C850; }
+.type-electric { background-color: #F8D030; }
+.type-ice { background-color: #98D8D8; }
+.type-fighting { background-color: #C03028; }
+.type-poison { background-color: #A040A0; }
+.type-ground { background-color: #E0C068; }
+.type-flying { background-color: #A890F0; }
+.type-psychic { background-color: #F85888; }
+.type-bug { background-color: #A8B820; }
+.type-rock { background-color: #B8A038; }
+.type-ghost { background-color: #705898; }
+.type-dragon { background-color: #7038F8; }
+.type-dark { background-color: #705848; }
+.type-steel { background-color: #B8B8D0; }
+.type-fairy { background-color: #EE99AC; }

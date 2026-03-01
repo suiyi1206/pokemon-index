@@ -1,0 +1,247 @@
+/* pages/index/index.wxss */
+.container {
+  padding: 20rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+}
+
+.search-area {
+  position: relative;
+  margin-bottom: 20rpx;
+}
+
+.search-input {
+  background-color: #fff;
+  border-radius: 50rpx;
+  padding: 20rpx 80rpx 20rpx 30rpx;
+  font-size: 28rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+}
+
+.search-icon {
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.filter-scroll {
+  white-space: nowrap;
+  margin-bottom: 20rpx;
+  padding: 10rpx 0;
+}
+
+.filter-buttons {
+  display: inline-flex;
+  gap: 12rpx;
+  padding: 0 10rpx;
+}
+
+.filter-button {
+  padding: 10rpx 20rpx;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 20rpx;
+  font-size: 22rpx;
+  color: white;
+  backdrop-filter: blur(10px);
+  white-space: nowrap;
+}
+
+.filter-button.active {
+  background: #ff6b6b;
+  font-weight: bold;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: center;
+  gap: 40rpx;
+  margin-bottom: 30rpx;
+}
+
+.tool-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-size: 24rpx;
+}
+
+.tool-icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-bottom: 8rpx;
+}
+
+.popup-menu {
+  position: absolute;
+  top: 280rpx;
+  right: 40rpx;
+  background: white;
+  border-radius: 12rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.15);
+  z-index: 100;
+}
+
+.menu-item {
+  padding: 20rpx 30rpx;
+  font-size: 26rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-item.active {
+  color: #ff6b6b;
+  font-weight: bold;
+}
+
+.pokemon-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.pokemon-card {
+  background: white;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  text-align: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+
+.pokemon-number {
+  font-size: 22rpx;
+  color: #888;
+}
+
+.favorite-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.pokemon-image {
+  width: 120rpx;
+  height: 120rpx;
+  margin: 0 auto;
+}
+
+.pokemon-name {
+  display: block;
+  font-weight: bold;
+  margin: 10rpx 0;
+  font-size: 28rpx;
+}
+
+.type-badges {
+  display: flex;
+  justify-content: center;
+  gap: 8rpx;
+  flex-wrap: wrap;
+}
+
+.type-badge {
+  padding: 6rpx 16rpx;
+  border-radius: 20rpx;
+  font-size: 20rpx;
+  color: white;
+  font-weight: 500;
+}
+
+.pokemon-list {
+  background: white;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+
+.pokemon-list-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+
+.pokemon-list-item:last-child {
+  border-bottom: none;
+}
+
+.list-pokemon-image {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+}
+
+.list-info {
+  flex: 1;
+}
+
+.list-number {
+  font-size: 22rpx;
+  color: #888;
+  display: block;
+}
+
+.list-name {
+  font-weight: bold;
+  font-size: 28rpx;
+  display: block;
+  margin: 5rpx 0;
+}
+
+.list-types {
+  display: flex;
+  gap: 8rpx;
+}
+
+.list-favorite-icon {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 100rpx 0;
+  color: white;
+}
+
+.empty-icon {
+  width: 100rpx;
+  height: 100rpx;
+  margin-bottom: 20rpx;
+  opacity: 0.7;
+}
+
+.empty-text {
+  font-size: 28rpx;
+}
+
+/* 宝可梦属性颜色 - 完整18种 */
+.type-normal { background-color: #A8A878; }
+.type-fire { background-color: #F08030; }
+.type-water { background-color: #6890F0; }
+.type-grass { background-color: #78C850; }
+.type-electric { background-color: #F8D030; }
+.type-ice { background-color: #98D8D8; }
+.type-fighting { background-color: #C03028; }
+.type-poison { background-color: #A040A0; }
+.type-ground { background-color: #E0C068; }
+.type-flying { background-color: #A890F0; }
+.type-psychic { background-color: #F85888; }
+.type-bug { background-color: #A8B820; }
+.type-rock { background-color: #B8A038; }
+.type-ghost { background-color: #705898; }
+.type-dragon { background-color: #7038F8; }
+.type-dark { background-color: #705848; }
+.type-steel { background-color: #B8B8D0; }
+.type-fairy { background-color: #EE99AC; }

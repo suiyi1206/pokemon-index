@@ -1,0 +1,92 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 顶部状态栏 -->
+  <view class="status-bar">
+    <text class="time">16:48</text>
+    <view class="battery-info">
+      <text class="battery">97%</text>
+      <text class="battery-icon">🔋</text>
+    </view>
+  </view>
+
+
+
+  <!-- 右上角地区切换 -->
+  <view class="region-switcher" bindtap="toggleRegionDropdown">
+    <text class="region-switcher-icon">🌍</text>
+    <text class="region-switcher-text">{{currentRegionShort}}</text>
+  </view>
+
+  <!-- 地区下拉菜单 -->
+  <view class="region-dropdown" wx:if="{{showRegionDropdown}}">
+    <view 
+      class="region-dropdown-item {{currentRegionKey === item.key ? 'active' : ''}}"
+      wx:for="{{regions}}"
+      wx:key="key"
+      bindtap="selectRegion"
+      data-region="{{item.key}}"
+    >
+      <text class="region-dropdown-icon">{{item.emoji}}</text>
+      <text class="region-dropdown-name">{{item.name}}地区</text>
+    </view>
+  </view>
+
+  <!-- 地区标题 -->
+  <view class="region-header">
+    <text class="region-title">{{currentRegion}}</text>
+  </view>
+
+  <!-- 功能按钮区域 -->
+  <view class="function-grid">
+  <view class="function-item" bindtap="navigateToPokedex">
+    <view class="function-icon">📘</view>
+    <text class="function-label">图鉴</text>
+  </view>
+  <view class="function-item" bindtap="navigateToTypeChart">
+    <view class="function-icon">⚔️</view>
+    <text class="function-label">属性克制</text>
+  </view>
+  <view class="function-item" bindtap="navigateToItems">
+    <view class="function-icon">🎒</view>
+    <text class="function-label">道具</text>
+  </view>
+  <view class="function-item" bindtap="navigateTodw">
+    <view class="function-icon">👥</view>
+    <text class="function-label">队伍</text>
+  </view>
+  <view class="function-item" bindtap="navigateToMaps">
+    <view class="function-icon">🗺️</view>
+    <text class="function-label">地图</text>
+  </view>
+  <view class="function-item" bindtap="navigateToGuide">
+    <view class="function-icon">📖</view>
+    <text class="function-label">攻略</text>
+  </view>
+  <view class="function-item" bindtap="navigateTosso">  <!-- 修改这里 -->
+    <view class="function-icon">🐉</view>
+    <text class="function-label">神兽</text>
+  </view>
+  <view class="function-item" bindtap="navigateTodaoguan">
+    <view class="function-icon"><image src="/pages/images/道具/dg.png" mode="widthFix"/></view>
+    <text class="function-label">道馆</text>
+  </view>
+</view>
+
+  <!-- 地区介绍 -->
+  <view class="region-intro">
+    <text class="intro-title">{{currentRegion}}介绍</text>
+    <text class="intro-content">{{regionDescription}}</text>
+  </view>
+
+  <!-- 特色宝可梦 -->
+  <view class="featured-pokemon">
+    <text class="section-title">{{currentRegion}}特色宝可梦</text>
+    <view class="pokemon-grid">
+      <view class="pokemon-item" wx:for="{{regionPokemons}}" wx:key="id" bindtap="viewPokemonDetail" data-id="{{item.id}}">
+        <view class="pokemon-image"><image src="{{item.image}}" mode="widthFix" binderror="onImageError"
+  data-index="{{index}}"/></view>
+        <text class="pokemon-name">{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+</view>

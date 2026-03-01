@@ -1,0 +1,23 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/jl/jl",
+    "pages/tujian/tujian",
+    "pages/sxkg/sxkg",
+    "pages/daoju/daoju",
+    "pages/dw/dw",
+    "pages/ditu/ditu",
+    "pages/gl/gl",
+    "pages/daoguan/daoguan",
+    "pages/sso/sso",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Weixin",
+    "navigationBarBackgroundColor": "#ffffff"
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json"
+}

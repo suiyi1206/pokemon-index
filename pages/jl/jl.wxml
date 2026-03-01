@@ -1,0 +1,259 @@
+<!-- pages/index/index.wxml -->
+<view class="container">
+  <!-- 顶部搜索区域 -->
+  <view class="search-area">
+    <input 
+      class="search-input" 
+      placeholder="搜索宝可梦名称或编号" 
+      bindinput="onSearchInput" 
+      value="{{searchText}}"
+    />
+    <image class="search-icon" src="/images/icons/search.png" />
+  </view>
+
+  <view class="my-btn" bind:tap="goTotujianpage">点我查看详情属性</view>
+
+  <!-- 属性分类筛选 -->
+  <scroll-view class="filter-scroll" scroll-x>
+    <view class="filter-buttons">
+      <view 
+        class="filter-button {{currentFilter === 'all' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="all"
+      >
+        全部
+      </view>
+      
+      <view 
+        class="filter-button {{currentFilter === 'normal' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="normal"
+      >
+        ⚪ 一般
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'fire' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="fire"
+      >
+        🔥 火
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'water' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="water"
+      >
+        💧 水
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'grass' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="grass"
+      >
+        🌿 草
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'electric' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="electric"
+      >
+        ⚡ 电
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'ice' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="ice"
+      >
+        ❄️ 冰
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'fighting' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="fighting"
+      >
+        🥊 格斗
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'poison' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="poison"
+      >
+        ☠️ 毒
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'ground' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="ground"
+      >
+        🏜️ 地面
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'flying' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="flying"
+      >
+        🕊️ 飞行
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'psychic' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="psychic"
+      >
+        🔮 超能
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'bug' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="bug"
+      >
+        🐛 虫
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'rock' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="rock"
+      >
+        🪨 岩石
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'ghost' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="ghost"
+      >
+        👻 幽灵
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'dragon' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="dragon"
+      >
+        🐉 龙
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'dark' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="dark"
+      >
+        🌑 恶
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'steel' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="steel"
+      >
+        ⚙️ 钢
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'fairy' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="fairy"
+      >
+        🧚 妖精
+      </view>
+      <view 
+        class="filter-button {{currentFilter === 'favorite' ? 'active' : ''}}"
+        bindtap="changeFilter"
+        data-filter="favorite"
+      >
+        ❤️ 收藏
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 工具栏 -->
+  <view class="toolbar">
+    <view class="tool-button" bindtap="showSortMenu">
+      <image class="tool-icon" src="/images/icons/sort.png" />
+      <text>排序</text>
+    </view>
+    <view class="tool-button" bindtap="toggleViewMode">
+      <image class="tool-icon" src="{{isGridView ? '/images/icons/list.png' : '/images/icons/grid.png'}}" />
+      <text>{{isGridView ? '列表' : '网格'}}</text>
+    </view>
+    <view class="tool-button" bindtap="showAdvancedFilter">
+      <image class="tool-icon" src="/images/icons/filter.png" />
+      <text>高级</text>
+    </view>
+  </view>
+
+  <!-- 排序菜单 -->
+  <view class="popup-menu" wx:if="{{showSortOptions}}">
+    <view class="menu-item {{sortBy === 'number' ? 'active' : ''}}" bindtap="setSort" data-sort="number">
+      按编号排序
+    </view>
+    <view class="menu-item {{sortBy === 'name' ? 'active' : ''}}" bindtap="setSort" data-sort="name">
+      按名称排序
+    </view>
+    <view class="menu-item {{sortBy === 'weight' ? 'active' : ''}}" bindtap="setSort" data-sort="weight">
+      按重量排序
+    </view>
+    <view class="menu-item {{sortBy === 'height' ? 'active' : ''}}" bindtap="setSort" data-sort="height">
+      按身高排序
+    </view>
+  </view>
+
+  <!-- 宝可梦展示区域 -->
+  <view class="content-area">
+    <!-- 网格视图 -->
+    <view wx:if="{{isGridView}}" class="pokemon-grid">
+      <view 
+        class="pokemon-card" 
+        wx:for="{{displayedPokemons}}" 
+        wx:key="id"
+        bindtap="viewPokemonDetail"
+        data-id="{{item.id}}"
+      >
+        <view class="card-header">
+          <text class="pokemon-number">#{{item.id.toString().padStart(3, '0')}}</text>
+          <image 
+            class="favorite-icon" 
+            src="{{item.isFavorite ? '/images/icons/heart-filled.png' : '/images/icons/heart-empty.png'}}" 
+            bindtap="toggleFavorite"
+            data-id="{{item.id}}"
+            catchtap="stopPropagation"
+          />
+        </view>
+        <image class="pokemon-image" src="{{item.image}}" mode="aspectFit" />
+        <text class="pokemon-name">{{item.name}}</text>
+        <view class="type-badges">
+          <text class="type-badge type-{{item.type1}}">{{getTypeName(item.type1)}}</text>
+          <text wx:if="{{item.type2}}" class="type-badge type-{{item.type2}}">{{getTypeName(item.type2)}}</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 列表视图 -->
+    <view wx:else class="pokemon-list">
+      <view 
+        class="pokemon-list-item" 
+        wx:for="{{displayedPokemons}}" 
+        wx:key="id"
+        bindtap="viewPokemonDetail"
+        data-id="{{item.id}}"
+      >
+        <image class="list-pokemon-image" src="{{item.image}}" />
+        <view class="list-info">
+          <text class="list-number">#{{item.id.toString().padStart(3, '0')}}</text>
+          <text class="list-name">{{item.name}}</text>
+          <view class="list-types">
+            <text class="type-badge type-{{item.type1}}">{{getTypeName(item.type1)}}</text>
+            <text wx:if="{{item.type2}}" class="type-badge type-{{item.type2}}">{{getTypeName(item.type2)}}</text>
+          </view>
+        </view>
+        <image 
+          class="list-favorite-icon" 
+          src="{{item.isFavorite ? '/images/icons/heart-filled.png' : '/images/icons/heart-empty.png'}}" 
+          bindtap="toggleFavorite"
+          data-id="{{item.id}}"
+          catchtap="stopPropagation"
+        />
+      </view>
+    </view>
+
+    <!-- 空状态 -->
+    <view class="empty-state" wx:if="{{displayedPokemons.length === 0}}">
+      <image class="empty-icon" src="/images/icons/pokeball.png" />
+      <text class="empty-text">没有找到宝可梦</text>
+    </view>
+  </view>
+</view>

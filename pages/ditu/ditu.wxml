@@ -1,0 +1,63 @@
+<!-- pages/map/map.wxml -->
+<view class="container">
+  <!-- 标题区域 -->
+  <view class="header">
+    <text class="title">宝可梦世界地图集</text>
+    <text class="subtitle">探索未知的宝可梦世界</text>
+  </view>
+
+  <!-- 地图切换器 -->
+  <scroll-view class="map-selector" scroll-x>
+    <view class="map-list">
+      <view 
+        class="map-item {{currentMap === index ? 'active' : ''}}" 
+        wx:for="{{mapList}}" 
+        wx:key="id"
+        bindtap="switchMap"
+        data-index="{{index}}"
+      >
+        <image class="map-thumbnail" src="{{item.thumbnail}}" mode="aspectFill" />
+        <text class="map-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 主地图显示 -->
+  <view class="main-map-container">
+    <image 
+      class="main-map" 
+      src="{{currentMapData.image}}" 
+      mode="widthFix"
+      binderror="onMapError"
+    />
+    <view class="map-info">
+      <text class="map-title">{{currentMapData.name}}</text>
+      <text class="map-description">{{currentMapData.description}}</text>
+      
+      <!-- 地图特征标签 -->
+      <view class="feature-tags">
+        <view class="feature-tag" wx:for="{{currentMapData.features}}" wx:key="*this">
+          <text class="tag-text">{{item}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 地图导航 -->
+  <view class="map-navigation">
+    <view class="nav-button" bindtap="prevMap">
+      <text class="nav-icon">◀</text>
+      <text class="nav-text">上一张</text>
+    </view>
+    
+    <view class="map-indicator">
+      <text class="current-index">{{currentMap + 1}}</text>
+      <text class="total-maps">/ {{mapList.length}}</text>
+    </view>
+    
+    <view class="nav-button" bindtap="nextMap">
+      <text class="nav-text">下一张</text>
+      <text class="nav-icon">▶</text>
+    </view>
+  </view>
+</view>

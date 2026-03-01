@@ -1,0 +1,85 @@
+<!-- pages/daoguan/daoguan.wxml -->
+<view class="container">
+  <!-- 地区选择器 - 左右滑动 -->
+  <scroll-view class="region-scroll" scroll-x>
+    <view class="region-list">
+      <view 
+        class="region-item {{currentRegion === item.key ? 'active' : ''}}"
+        wx:for="{{regions}}"
+        wx:key="key"
+        bindtap="switchRegion"
+        data-region="{{item.key}}"
+      >
+        <text class="region-emoji">{{item.emoji}}</text>
+        <text class="region-name">{{item.name}}</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 地区标题 -->
+  <view class="region-header">
+    <text class="region-title">{{currentRegionName}}道馆</text>
+  </view>
+
+  <!-- 道馆详情表格 -->
+  <view class="gym-table">
+    <!-- 表格标题 -->
+    <view class="table-header">
+      <view class="header-cell">道馆馆主</view>
+      <view class="header-cell">道馆</view>
+      <view class="header-cell">其他职业</view>
+      <view class="header-cell">擅长属性</view>
+      <view class="header-cell">对战规则</view>
+      <view class="header-cell">同行宝可梦</view>
+      <view class="header-cell">对战</view>
+    </view>
+
+    <!-- 表格内容 -->
+    <view class="table-body">
+      <view class="table-row" wx:for="{{currentGyms}}" wx:key="id">
+        <!-- 馆主信息 -->
+        <view class="table-cell gym-leader">
+          <image class="leader-avatar" src="{{item.image}}" mode="aspectFit" />
+          <text class="leader-name">{{item.leader}}</text>
+        </view>
+        
+        <!-- 道馆信息 -->
+        <view class="table-cell">
+          <text class="gym-name">{{item.gym}}</text>
+          <text class="gym-city">{{item.city}}</text>
+        </view>
+        
+        <!-- 其他职业 -->
+        <view class="table-cell">
+          <text class="other-job">{{item.otherJob || '无'}}</text>
+        </view>
+        
+        <!-- 擅长属性 -->
+        <view class="table-cell">
+          <view class="type-badge type-{{item.type}}">
+            {{getTypeName(item.type)}}
+          </view>
+        </view>
+        
+        <!-- 对战规则 -->
+        <view class="table-cell">
+          <text class="battle-rule">{{item.rule}}</text>
+        </view>
+        
+        <!-- 同行宝可梦 -->
+        <view class="table-cell">
+          <view class="pokemon-list">
+            <text wx:for="{{item.pokemons}}" wx:key="*this" class="pokemon-name">
+              {{item}}
+            </text>
+          </view>
+        </view>
+        
+        <!-- 对战信息 -->
+        <view class="table-cell">
+          <text class="battle-info">{{item.battle}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

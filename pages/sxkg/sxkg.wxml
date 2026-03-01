@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="header">
+    <text class="title">宝可梦属性克制表</text>
+    <text class="subtitle">攻击方使用的招式属性 → 防御方的宝可梦属性</text>
+  </view>
+  <scroll-view class="table-container" scroll-x scroll-y>
+    <image class="image-sx" src="/pages/images/属性/R-C.jpg"/>
+  </scroll-view>
+  
+</view>

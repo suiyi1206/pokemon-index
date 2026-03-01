@@ -1,0 +1,39 @@
+<!--pages/dw/dw.wxml-->
+<!-- pages/pokemon-card/pokemon-card.wxml -->
+<view class="card-list">
+  <!-- 单个宝可梦卡片 -->
+  <view class="pokemon-card" wx:for="{{pokemonList}}" wx:key="name">
+    <!-- 左侧：宝可梦图标 -->
+    <image class="pokemon-icon" src="{{item.url}}" mode="aspectFit"></image>
+    <!-- 右侧：信息区域 -->
+    <view class="info-wrapper">
+      <!-- 名称、性别、属性 -->
+      <view class="header">
+        <text class="name">{{item.name}}</text>
+        <image class="gender-icon" src="{{item.gender === '♂' ? '/images/male.png' : '/images/female.png'}}" mode="aspectFit"></image>
+        <view class="type-list">
+          <view class="type" wx:for="{{item.types}}" wx:key="*this" style="background-color: {{item.typeColor}};">{{item.type}}</view>
+        </view>
+      </view>
+      <!-- 特性、种族值 -->
+      <view class="feature-stats">
+        <view class="feature">
+          <text class="label">特性：</text>
+          <text wx:for="{{item.abilities}}" wx:key="*this">{{item}} / </text>
+        </view>
+        <view class="stats">
+          <text>生命{{item.hp}} /攻击 {{item.attack}} /防御 {{item.defense}} </text>
+        </view>
+      </view>
+      <!-- 携带道具 -->
+      <view class="item">
+        <text class="label">携带：</text>
+        <text>{{item.item}}</text>
+      </view>
+      <!-- 技能列表 -->
+      <view class="moves">
+        <view class="move" wx:for="{{item.moves}}" wx:key="*this" style="background-color: {{item.moveTypeColor}};">{{item.move}}</view>
+      </view>
+    </view>
+  </view>
+</view>

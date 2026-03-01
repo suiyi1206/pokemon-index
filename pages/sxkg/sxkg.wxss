@@ -1,0 +1,55 @@
+/* pages/type-chart/type-chart.wxss */
+.container {
+  padding: 20rpx;
+  background: #f5f5f5;
+  min-height: 100vh;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background: white;
+  border-radius: 10rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  display: block;
+}
+
+.subtitle {
+  font-size: 24rpx;
+  color: #666;
+  margin-top: 10极速;
+  display: block;
+}
+.table-container {
+  width: 750rpx;
+  height: 80vh;
+  margin-bottom: 30rpx;
+  background: white;
+  border-radius: 10rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 极速.1);
+}
+.image-sx {
+            width: 600px;
+            height: 400px;
+            transform: scale(1.03);
+            transform-origin: center;
+            margin-bottom: 10px;
+            border: 3px solid #e0e0e0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #555;
+            font-size: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
